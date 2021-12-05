@@ -24,12 +24,12 @@ class DisPar // distance and parent
 } // class DisPar ends
 
 class Vertex{
-    public char label; // label (e.g A)
+    public String label; // label (e.g A)
     public boolean isInTree; 
     
    //-----------------------------------
     
-    public Vertex(char lab) // constructor
+    public Vertex(String lab) // constructor
     {
         label = lab;
         isInTree = false;
@@ -49,7 +49,7 @@ class Graph{
     private DisPar sPath[]; // array of the shortest path data
     private int currentVert; //current vertex
     private int startToCurrent; //distance to current vertex(currentVert)
-    
+    String res;
     //------------------------------------------------------------------
     
     public Graph() // constructor
@@ -58,6 +58,7 @@ class Graph{
         adjMat = new int[MAX_VERTS][MAX_VERTS]; // adjacency matrix
         nVerts = 0;
         nTree = 0;
+        
         
         for(int j=0 ; j<MAX_VERTS; j++) // set Adjacency
         {
@@ -73,7 +74,7 @@ class Graph{
     //-----------------------------------------------------------------
     
     
-    public void addVertex(char lab)
+    public void addVertex(String lab)
     {
         VertexList[nVerts++] = new Vertex(lab);
     }
@@ -197,16 +198,19 @@ class Graph{
                     System.out.print(VertexList[j].label +" = "); // B=
                     if(sPath[j].distance == INFINITY)
                     {
-                        System.out.print("inf");
+                        System.out.print("infinite");
                     }
                     else
                     {
                         System.out.print(sPath[j].distance); // 50
+                        this.res = ""+sPath[j].distance+" km";
                     }
-                    char parent = VertexList[sPath[j].parentVert].label;
+                    String parent = VertexList[sPath[j].parentVert].label;
                     System.out.print(" ( "+parent+" ) "); // (A)
+//                    this.res = parent;
                 }
                 System.out.println("");
+                
             }
         // ---------------------------------------------------------------------
 } // end class Graph
@@ -219,25 +223,25 @@ public class JavaApplication12 {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Graph theGraph = new Graph();
-        theGraph.addVertex('A'); // 0 (Start)
-        theGraph.addVertex('B'); // 1
-        theGraph.addVertex('C'); // 2
-        theGraph.addVertex('D'); // 3
-        theGraph.addVertex('E'); // 4
+//        Graph theGraph = new Graph();
+//        theGraph.addVertex('A'); // 0 (Start)
+//        theGraph.addVertex('B'); // 1
+//        theGraph.addVertex('C'); // 2
+//        theGraph.addVertex('D'); // 3
+//        theGraph.addVertex('E'); // 4
+//        
+//        
+//        theGraph.addEdge(0, 1, 50); //AB 50
+//        theGraph.addEdge(0, 3, 80); // AD 80
+//        theGraph.addEdge(1, 2, 60); //BC 60
+//        theGraph.addEdge(1, 3, 90); // BD 90
+//        theGraph.addEdge(2, 4, 40); //CE 40
+//        theGraph.addEdge(3, 2, 20); // DC 20
+//        theGraph.addEdge(4,1,50); // EB 50
         
-        
-        theGraph.addEdge(0, 1, 50); //AB 50
-        theGraph.addEdge(0, 3, 80); // AD 80
-        theGraph.addEdge(1, 2, 60); //BC 60
-        theGraph.addEdge(1, 3, 90); // BD 90
-        theGraph.addEdge(2, 4, 40); //CE 40
-        theGraph.addEdge(3, 2, 20); // DC 20
-        theGraph.addEdge(4,1,50); // EB 50
-        
-        System.out.println("Shortest paths");
-        theGraph.path(); // shortest paths
-        System.out.println();
+//        System.out.println("Shortest paths");
+//        theGraph.path(); // shortest paths
+//        System.out.println();
         
     } // end main
      
